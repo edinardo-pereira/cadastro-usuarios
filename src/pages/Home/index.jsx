@@ -7,11 +7,12 @@ import {
   Input,
   InputLabel,
   Title,
-  TopBackground
+
 } from './styles'
 
-import ImageUsuarios from '../../assets/users.png'
+
 import Button from '../../components/Button'
+import TopBackground from '../../components/TopBackground'
 
 
 function Home() {
@@ -20,21 +21,19 @@ function Home() {
   const inputEmail = useRef()
 
   async function registerNewUser() {
-     const data = await api.post('/usuarios', {
-        email: inputEmail.current.value,
-        age: parseInt(inputAge.current.value),
-        name: inputName.current.value
-      })
-      
-      console.log(data);
-      
+    const data = await api.post('/usuarios', {
+      email: inputEmail.current.value,
+      age: parseInt(inputAge.current.value),
+      name: inputName.current.value
+    })
+
+    console.log(data);
+
   }
 
   return (
     <Container>
-      <TopBackground>
-        <img src={ImageUsuarios} alt="Imagem-usuários" />
-      </TopBackground>
+      <TopBackground />
 
       <Form>
         <Title>Cadastrar Usuário</Title>
@@ -60,12 +59,18 @@ function Home() {
           <InputLabel>
             E-mail<span> *</span>
           </InputLabel>
-          <Input type='email' placeholder='E-mail do usuário' ref={ inputEmail } />
+          <Input type='email' placeholder='E-mail do usuário' ref={inputEmail} />
         </div>
 
 
-        <Button type='button' onClick={registerNewUser} >Cadastrar Usuário</Button>
+        <Button type='button' onClick={registerNewUser} theme='primary' >
+          Cadastrar Usuário
+        </Button>
       </Form>
+      <Button type='button' >
+        Lista de Usuário
+      </Button>
+
     </Container >
 
   )
