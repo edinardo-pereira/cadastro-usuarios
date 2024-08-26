@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import api from '../../services/api'
 import {
   Container,
@@ -19,6 +20,8 @@ function Home() {
   const inputName = useRef()
   const inputAge = useRef()
   const inputEmail = useRef()
+
+  const navigate = useNavigate()
 
   async function registerNewUser() {
     const data = await api.post('/usuarios', {
@@ -67,7 +70,7 @@ function Home() {
           Cadastrar Usuário
         </Button>
       </Form>
-      <Button type='button' >
+      <Button type='button' onClick={() =>navigate('/Lista-de-usuarios')} >
         Lista de Usuário
       </Button>
 
